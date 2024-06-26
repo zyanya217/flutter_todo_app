@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_todo_app/constants/colors.dart';
+import '../constants/colors.dart';
+import '../widgets/todo_item.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,10 +11,27 @@ class Home extends StatelessWidget {
       backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Column(
           children: [
             SearchBar(),
+            Expanded(
+              child: ListView(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 50, bottom: 20),
+                    child: Text('All ToDos',
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.w500)),
+                  ),
+                  ToDoItem(),
+                  ToDoItem(),
+                  ToDoItem(),
+                  ToDoItem(),
+                  ToDoItem(),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -42,7 +59,7 @@ class Home extends StatelessWidget {
   AppBar _buildAppBar() {
     return AppBar(
       backgroundColor: tdBGColor,
-      elevation: 0, // 不要陰影
+      elevation: 0, // 陰影
       title: Row(
           mainAxisAlignment:
               MainAxisAlignment.spaceBetween, //排版:左選單右頭像(沒這行會擠在一起)
